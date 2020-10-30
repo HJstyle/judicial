@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Home</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="all,follow">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Fontastic Custom icon font-->
+  <link rel="stylesheet" href="css/fontastic.css">
+  <!-- Google fonts - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/sweetalert.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    .contextmenu {
+      display: none;
+      position: absolute;
+      width: 5em;
+      background: #FFFFFF;
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 99;
+      list-style: none;
+      padding-left: 0px;
+    }
+
+    .contextmenu li {
+      text-align: center;
+      border-left: 3px solid transparent;
+      transition: ease 0.3s;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .contextmenu li:hover {
+      background: #CE93D8;
+      border-left: 3px solid #9C27B0;
+    }
+
+    .contextmenu li a {
+      display: block;
+      padding: 10px;
+      color: #000000;
+      text-decoration: none;
+      transition: ease 0.3s;
+    }
+
+    .contextmenu li:hover a {
+      color: #FF0000;
+    }
+  </style>
+  <script src="vendor/jquery.min.js"></script>
+  <script src="scripts/echarts.min.js"></script>
+  <!--<script src="scripts/Plugin/bmap.min.js"></script>-->
+  <!--<script src="http://api.map.baidu.com/api?v=2.0&ak=WSrX4bCfgcjTfhWNCwvfI1ZnQnfZDxFW"></script>-->
+  <!--<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>-->
+  <!--&lt;!&ndash;<script src="scripts/sanlian.js"></script>&ndash;&gt;-->
+  <!--<script src="scripts/Plugin/laydate/laydate.js"></script>-->
+  <!--<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.3.1/dist/g6.min.js"></script>-->
+  <script src="scripts/index1.js"></script>
+  <!--<script src="js/vue.min.js"></script>-->
+  <!--<script src="js/sweetalert-dev.js"></script>-->
+
+</head>
+
+<body>
+  <div class="page" id="app" v-cloak>
+    <!-- Main Navbar-->
+    <header class="header">
+      <nav class="navbar">
+        <!-- Search Box-->
+        <div class="search-box">
+          <button class="dismiss"><i class="icon-close"></i></button>
+
+        </div>
+        <div class="container-fluid">
+          <div class="navbar-holder d-flex align-items-center justify-content-between">
+            <!-- Navbar Header-->
+            <div class="navbar-header">
+              <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <div class="brand-text d-none d-lg-inline-block"><strong>知识图谱管理系统</strong></div>
+                <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>知识图谱管理系统</strong></div>
+              </a>
+              <!-- Toggle Button--><a id="toggle-btn" href="#"
+                class="menu-btn active"><span></span><span></span><span></span></a>
+            </div>
+            <!-- Navbar Menu -->
+            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+
+              <!-- Logout    -->
+              <li class="nav-item" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"><a href="#"
+                  class="nav-link logout"></a> <span class="d-none d-sm-inline">退出登录</span><i
+                  class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+      <!-- Side Navbar -->
+      <nav class="side-navbar">
+        <!-- Sidebar Header-->
+        <div class="sidebar-header d-flex align-items-center">
+          <div class="title">
+            <h1 class="h4">admin</h1>
+          </div>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a href="index.html"> <i class="icon-home"></i>导览 </a></li>
+          <li><a href="#object" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>本体操作</a>
+            <ul id="object" class="collapse list-unstyled ">
+              <li><a href="objectAppend.html">本体添加</a></li>
+              <li><a href="objectOpera.html">本体查看与修改</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#knowledge" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>知识操作</a>
+            <ul id="knowledge" class="collapse list-unstyled ">
+              <li><a href="knowledgeAppend.html">知识添加</a></li>
+              <li><a href="knowledgeOpera.html">知识查看与修改</a></li>
+            </ul>
+          </li>
+          <li><a href="docs.html"> <i class="icon-padnote"></i>文档操作 </a></li>
+          <li><a href="#object1" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>要素抽取</a>
+            <ul id="object1" class="collapse list-unstyled ">
+              <li><a href="resultTest.html">数据分析与结果</a></li>
+              <li><a href="extract.html">司法要素抽取</a></li>
+            </ul>
+          </li>
+          <li><a href="#object2" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>信息抽取管理</a>
+            <ul id="object2" class="collapse list-unstyled ">
+              <li><a href="elementAppend.html">案件要素管理</a></li>
+              <li><a href="personal_attribute.html">人员属性管理</a></li>
+              <li><a href="personal_case.html">涉案信息管理</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="graph.html"> <i class="fa fa-bar-chart"></i>知识图谱图例 </a></li>
+        </ul>
+      </nav>
+      <div class="content-inner">
+        <!-- Page Header-->
+        <header class="page-header">
+          <div class="container-fluid">
+            <!--<div class="btn-group btn-group-lg">-->
+              <!--<button type="button" class="btn btn-primary" @click="changeFrame(1)">主界面</button>-->
+              <!--<button type="button" class="btn btn-primary" @click="changeFrame(2)">全图展示</button>-->
+              <!--<button type="button" class="btn btn-primary" @click="changeFrame(3)">邻接关系</button>-->
+              <!--<button type="button" class="btn btn-primary" @click="changeFrame(4)">关系挖掘</button>-->
+            <!--</div>-->
+          </div>
+        </header>
+        <!-- Dashboard Counts Section-->
+        <section class="dashboard-counts no-padding-bottom" style="padding-top: 0px;">
+          <div class="container-fluid">
+            <div class="row" v-if="mainView">
+              <div class='col-lg-8' style="height:47em;">
+                <div class="col-lg-12" style="height: 23.5em; background-color: #ffffff;border: 1px solid #cccccc;"
+                  id="obs-p">
+                  <div id="lins1" style="width:97.5%;height:95%;display: block;padding-left: 1.25%;padding-top:2.2%"></div>
+
+                  <!--<div id="guanxi"></div>-->
+                  <!--<div id="obs">-->
+                    <!--&lt;!&ndash;<div id="lins1" style="width: 100%;height:100%"></div>&ndash;&gt;-->
+
+                  <!--</div>-->
+                </div>
+                <div class="col-lg-12" style="height: 23.5em; background-color: #ffffff;border: 1px solid #cccccc;"
+                  id="knowledge-p">
+                  <div id="lineChart2" style="width:97.5%;height:95%;display: block;padding-left: 1.25%;padding-top:2.2%"></div>
+                  <div id="knowledges">
+
+                  </div>
+                </div>
+              </div>
+              <div class='col-lg-4'
+                style="height:50em; background-color: #ffffff;border: 1px solid #cccccc;overflow-y: scroll;">
+                <input type="file" id="upFile" style="margin-top: 1em ;display: none;" placeholder="上传文书"
+                  @change="fileChange" />
+                <button class="btn btn-block btn-primary" style="margin-top: 1em ;" @click="upPdfFile">上传文档</button>
+                <div class="col-lg-12" style="margin-top: 1em;">
+                  <span class="word-span" v-for="(item, index) in words" :key="index" @contextmenu.prevent="showMenu"
+                    style="border: 1px solid #DDDDDD;border-radius: 25px;  margin-left: 0.3em;margin-top: 0.1em;cursor: pointer;padding:0.2em;background-color: #bbbbbb;">
+                    {{item}}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="row" v-else>
+              <iframe class="col-lg-12" :src="frameLink" style="height: 50em;"></iframe>
+            </div>
+          </div>
+        </section>
+        <!-- Dashboard Header Section    -->
+
+        <!-- Projects Section-->
+        <!--  -->
+        <!-- Page Footer-->
+
+      </div>
+    </div>
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">退出系统</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定退出并清除您的登录凭据吗？
+          </div>
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="logout()">退出</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <ul class="contextmenu">
+      <li @click="insertOb()">
+        添加为本体
+      </li>
+      <li @click="insertKnowledge()">
+        添加为知识
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- JavaScript files-->
+  <!-- Main File-->
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <!-- Main File-->
+  <script src="js/front.js"></script>
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.3.1/dist/g6.min.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  <script src="js/sweetalert-dev.js"></script>
+  <script src="js/require.js"></script>
+  <script src="scripts/sanlian.js"></script>
+  <script type="text/javascript">
+      $(function(){
+          var lins1 = echarts.init(document.getElementById('lins1'));
+          lins1.setOption(option1);
+          var lineChart2 = echarts.init(document.getElementById('lineChart2'));
+          lineChart2.setOption(optionr);
+//          var guanxi = echarts.init(document.getElementById('guanxi'));
+//          guanxi.setOption(option3);
+      });
+  </script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        user: {
+          username: "",
+          password: ""
+        },
+        pdfFile: null,
+        words: [],
+        upOb: {
+          id: "",
+          name: "",
+          property: [],
+          knowledgeRelation: [],
+          objectRelation: [],
+          docRelation: [],
+          relation: []
+        },
+        upKnowledge: {
+          id: "",
+          name: "",
+          property: [],
+          knowledgeRelation: [],
+          objectRelation: [],
+          docRelation: [],
+          relation: []
+        },
+        mainView: true,
+        frameLink: "#",
+        doc: {
+
+        }
+      },
+      created() {
+        console.log(1)
+        document.onload = function () {
+
+        }
+      },
+      mounted() {
+        obsData = {
+          "nodes": []
+        }
+        knowledgeData = {
+          "nodes": []
+        }
+        relations = {}
+        maxObId = 0
+        maxKnowledgeId = 0
+        axios.get('/knowledgeGraph/knowledge/findAll', {})
+          .then(res1 => {
+            axios.get('/knowledgeGraph/ob/findAll', {})
+              .then(res2 => {
+                for (index1 in res2.data) {
+                  let tmpdata = res2.data[index1]
+                  let tmpObNode = {
+                    id: "本体" + tmpdata.id + "：" + tmpdata.name,
+                    size: 50,
+                    rank: "ob" + tmpdata.id,
+                    label:tmpdata.name
+                  }
+                  obsData.nodes.push(tmpObNode)
+                  maxObId = tmpdata.id
+                  let tmpRelations = []
+                  let knowledgeRelation = JSON.parse(tmpdata.knowledgeRelation)
+                  for (let i in knowledgeRelation) {
+                    tmpRelation = knowledgeRelation[i]
+                    tmpRelations.push(
+                      "knowledge" + tmpRelation.to
+                    )
+                  }
+                  relations["ob" + tmpdata.id] = tmpRelations
+
+                }
+
+                for (index2 in res1.data) {
+
+                  let tmpdata = res1.data[index2]
+
+                  let tmpknowledgeNode = {
+                    id: "知识" + tmpdata.id + "：" + tmpdata.name,
+                    size: 50,
+                    rank: "knowledge" + tmpdata.id,
+                    label:tmpdata.name
+                  }
+                  knowledgeData.nodes.push(tmpknowledgeNode)
+                  maxKnowledgeId = tmpdata.id
+                  let tmpRelations = []
+                  let objectRelation = JSON.parse(tmpdata.objectRelation)
+                  for (let i in objectRelation) {
+                    tmpRelation = objectRelation[i]
+                    tmpRelations.push(
+                      "ob" + tmpRelation.to
+                    )
+                  }
+                  relations["knowledge" + tmpdata.id] = tmpRelations
+                }
+
+                obsGraph = new G6.Graph({
+                  container: 'obs', // 指定挂载容器
+                  width: $("#obs-p").width(), // 图的宽度
+                  height: $("#obs-p").height(), // 图的高度\
+                  layout: { // Object，可选，布局的方法及其配置项，默认为 random 布局。
+                    type: 'force',
+
+                  },
+                  modes: {
+                    default: [{
+                        type: 'drag-canvas',
+                      },
+                      {
+                        type: 'zoom-canvas',
+                      },
+                      {
+                        type: 'drag-node',
+                        enableDelegate: true,
+                      },
+                      {
+                        type: 'tooltip',
+                        formatText(model) {
+                          return model.id;
+                        },
+                        offset: 20
+                      },
+                    ],
+                  },
+                  nodeStateStyles: {
+                    // ...见上方例子
+                    hover: {
+                      fill: '#00868B',
+                      // name 为 shape-name1 的子图形在该状态值下的样式
+                      'node-label': {
+                        fontSize: 15
+                      },
+                    },
+                  },
+                  defaultNode: {
+                    // ... 其他属性
+                    style: {
+                      fill: '#FF8C00',
+                      lineWidth: 0,
+                      // ... 其他属性
+                    },
+                  },
+                });
+                knowledgesGraph = new G6.Graph({
+                  container: 'knowledges', // 指定挂载容器
+                  width: $("#knowledge-p").width(), // 图的宽度
+                  height: $("#knowledge-p").height(), // 图的高度
+                  layout: { // Object，可选，布局的方法及其配置项，默认为 random 布局。
+                    type: 'force',
+
+                  },
+                  modes: {
+                    default: [{
+                        type: 'drag-canvas',
+                      },
+                      {
+                        type: 'zoom-canvas',
+                      },
+                      {
+                        type: 'drag-node',
+                        enableDelegate: true,
+                      },
+                      {
+                        type: 'tooltip',
+                        formatText(model) {
+                          console.log(model)
+                          return model.id;
+                        },
+                        offset: 20
+                      },
+                    ],
+                  },
+                  nodeStateStyles: {
+                    // ...见上方例子
+                    hover: {
+                      fill: '#d3adf7',
+                      // name 为 shape-name1 的子图形在该状态值下的样式
+                      'node-label': {
+                        fontSize: 15
+                      },
+                    },
+                  },
+                  defaultNode: {
+                    // ... 其他属性
+                    style: {
+                      fill: '#D1EEEE',
+
+                      // ... 其他属性
+                    },
+                  },
+                });
+                obsGraph.on('node:mouseenter', ev => {
+                  let rank = ev.item.defaultCfg.model.rank
+                  let nodes = knowledgesGraph.getNodes()
+                  let nodeRelation = relations[ev.item.defaultCfg.model.rank]
+                  for (let index in nodes) {
+                    knowledgesGraph.setItemState(nodes[index], "hover", false)
+                    for (let i in nodeRelation) {
+                      if (nodeRelation[i] == nodes[index].defaultCfg.model.rank) {
+                        knowledgesGraph.setItemState(nodes[index], "hover", true)
+                      }
+                    }
+                  }
+                });
+                knowledgesGraph.on('node:mouseenter', ev => {
+                  let rank = ev.item.defaultCfg.model.rank
+                  let nodes = obsGraph.getNodes()
+                  let nodeRelation = relations[ev.item.defaultCfg.model.rank]
+                  for (let index in nodes) {
+                    obsGraph.setItemState(nodes[index], "hover", false)
+                    for (let i in nodeRelation) {
+                      if (nodeRelation[i] == nodes[index].defaultCfg.model.rank) {
+                        obsGraph.setItemState(nodes[index], "hover", true)
+                      }
+                    }
+                  }
+                });
+
+                obsGraph.data(obsData)
+                knowledgesGraph.data(knowledgeData)
+                obsGraph.render(); // 渲染
+                knowledgesGraph.render(); // 渲染
+              })
+              .catch(err => {
+                console.error(err);
+              })
+          })
+          .catch(err => {
+            console.error(err);
+          })
+        this.user = $.cookie("user")
+        if (this.user == null) {
+          location.href = "login.html"
+        }
+        $(document).ready(function () {
+          // 鼠标右键事件
+
+          // 点击之后，右键菜单隐藏
+          $(document).click(function () {
+            $(".contextmenu").hide();
+          });
+        });
+
+
+      },
+      methods: {
+        logout: function () {
+          $.removeCookie('user');
+          location.href = "login.html"
+        },
+        upPdfFile: function () {
+          $("#upFile").click()
+        },
+        fileChange: function () {
+          swal("文档开始解析")
+          let file = $("#upFile")[0].files[0]
+          let formData = new FormData();
+          formData.append("file", file)
+          axios.post("/knowledgeGraph/doc/getFile", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data"
+              },
+            })
+            .then(res => {
+              app.words = res.data.words
+              app.doc = res.data.doc
+              app.doc.property = JSON.parse(app.doc.property)
+              app.doc.objectRelation = JSON.parse(app.doc.objectRelation)
+              app.doc.knowledgeRelation = JSON.parse(app.doc.knowledgeRelation)
+              app.doc.docRelation = JSON.parse(app.doc.docRelation)
+              swal("文档解析完成")
+            })
+            .catch(err => {
+              console.error(err);
+            })
+        },
+        showMenu: function (e) {
+          app.upOb.name = e.toElement.innerText
+          app.upKnowledge.name = e.toElement.innerText
+          var winWidth = $(document).width();
+          var winHeight = $(document).height();
+          // 鼠标点击位置坐标
+          var mouseX = e.pageX;
+          var mouseY = e.pageY;
+          // ul标签的宽高
+          var menuWidth = $(".contextmenu").width();
+          var menuHeight = $(".contextmenu").height();
+          // 最小边缘margin(具体窗口边缘最小的距离)
+          var minEdgeMargin = 10;
+          // 以下判断用于检测ul标签出现的地方是否超出窗口范围
+          // 第一种情况：右下角超出窗口
+          if (mouseX + menuWidth + minEdgeMargin >= winWidth &&
+            mouseY + menuHeight + minEdgeMargin >= winHeight) {
+            menuLeft = mouseX - menuWidth - minEdgeMargin + "px";
+            menuTop = mouseY - menuHeight - minEdgeMargin + "px";
+          }
+          // 第二种情况：右边超出窗口
+          else if (mouseX + menuWidth + minEdgeMargin >= winWidth) {
+            menuLeft = mouseX - menuWidth - minEdgeMargin + "px";
+            menuTop = mouseY + minEdgeMargin + "px";
+          }
+          // 第三种情况：下边超出窗口
+          else if (mouseY + menuHeight + minEdgeMargin >= winHeight) {
+            menuLeft = mouseX + minEdgeMargin + "px";
+            menuTop = mouseY - menuHeight - minEdgeMargin + "px";
+          }
+          // 其他情况：未超出窗口
+          else {
+            menuLeft = mouseX + minEdgeMargin + "px";
+            menuTop = mouseY + minEdgeMargin + "px";
+          };
+          // ul菜单出现
+          $(".contextmenu").css({
+            "left": menuLeft,
+            "top": menuTop
+          }).show();
+          // 阻止浏览器默认的右键菜单事件
+          return false;
+          return false
+        },
+        insertOb: function () {
+          subOb = JSON.parse(JSON.stringify(app.upOb))
+          subOb.property = JSON.stringify(subOb.property)
+          subOb.knowledgeRelation = JSON.stringify(subOb.knowledgeRelation)
+          subOb.objectRelation = JSON.stringify(subOb.objectRelation)
+          subOb.docRelation.push({
+            to: app.doc.id,
+            content: "属于",
+          })
+          subOb.docRelation = JSON.stringify(subOb.docRelation)
+
+          axios.post("/knowledgeGraph/ob/insert", subOb)
+            .then(res => {
+
+              maxObId += 1
+              let model = {
+                id: "本体：" + subOb.name + "--" + maxObId,
+                size: 50,
+              }
+              obsGraph.addItem('node', model);
+              app.doc.objectRelation.push({
+                to:maxObId,
+                content:"包含",
+                name:subOb.name,
+              })
+              subdoc = JSON.parse(JSON.stringify(app.doc))
+              subdoc.property = JSON.stringify(subdoc.property)
+              subdoc.knowledgeRelation = JSON.stringify(subdoc.knowledgeRelation)
+              subdoc.objectRelation = JSON.stringify(subdoc.objectRelation)
+              subdoc.docRelation = JSON.stringify(subdoc.docRelation)
+              console.log(subdoc)
+              axios.post("/knowledgeGraph/doc/update", subdoc)
+                .then(res => {
+                  swal("添加本体成功")
+                })
+                .catch(err => {
+                  console.error(err);
+                })
+            })
+            .catch(err => {
+              console.error(err);
+            })
+        },
+        insertKnowledge: function () {
+          subOb = JSON.parse(JSON.stringify(app.upKnowledge))
+          subOb.property = JSON.stringify(subOb.property)
+          subOb.knowledgeRelation = JSON.stringify(subOb.knowledgeRelation)
+          subOb.objectRelation = JSON.stringify(subOb.objectRelation)
+          subOb.docRelation.push({
+            to: app.doc.id,
+            content: "属于",
+          })
+          subOb.docRelation = JSON.stringify(subOb.docRelation)
+          axios.post("/knowledgeGraph/knowledge/insert", subOb)
+            .then(res => {
+
+              maxKnowledgeId += 1
+              let model = {
+                id: "知识：" + subOb.name + "--" + maxKnowledgeId,
+                size: 50,
+              }
+              knowledgesGraph.addItem('node', model);
+              app.doc.knowledgeRelation.push({
+                to:maxObId,
+                content:"包含",
+                name:subOb.name,
+              })
+              subdoc = JSON.parse(JSON.stringify(app.doc))
+              subdoc.property = JSON.stringify(subdoc.property)
+              subdoc.knowledgeRelation = JSON.stringify(subdoc.knowledgeRelation)
+              subdoc.objectRelation = JSON.stringify(subdoc.objectRelation)
+              subdoc.docRelation = JSON.stringify(subdoc.docRelation)
+              console.log(subdoc)
+              axios.post("/knowledgeGraph/doc/update", subdoc)
+                .then(res => {
+                  swal("添加知识成功")
+                })
+                .catch(err => {
+                  console.error(err);
+                })
+            })
+            .catch(err => {
+              console.error(err);
+            })
+        },
+        changeFrame(index) {
+          if (index == 1) {
+            if (app.mainView == true) {
+              return
+            }
+            app.mainView = true
+            obsData = {
+              "nodes": []
+            }
+            knowledgeData = {
+              "nodes": []
+            }
+            relations = [
+
+            ]
+            maxObId = 0
+            maxKnowledgeId = 0
+            axios.get('/knowledgeGraph/knowledge/findAll', {})
+              .then(res1 => {
+                axios.get('/knowledgeGraph/ob/findAll', {})
+                  .then(res2 => {
+                    for (index1 in res2.data) {
+                      let tmpdata = res2.data[index1]
+                      let tmpObNode = {
+                        id: "本体" + tmpdata.id + "：" + tmpdata.name,
+                        size: 50,
+                        rank: "ob" + tmpdata.id,
+                      }
+                      obsData.nodes.push(tmpObNode)
+                      maxObId = tmpdata.id
+                      let tmpRelations = []
+                      let knowledgeRelation = JSON.parse(tmpdata.knowledgeRelation)
+                      for (let i in knowledgeRelation) {
+                        tmpRelation = knowledgeRelation[i]
+                        tmpRelations.push(
+                          "knowledge" + tmpRelation.to
+                        )
+                      }
+                      relations["ob" + tmpdata.id] = tmpRelations
+
+                    }
+
+                    for (index2 in res1.data) {
+
+                      let tmpdata = res1.data[index2]
+
+                      let tmpknowledgeNode = {
+                        id: "知识" + tmpdata.id + "：" + tmpdata.name,
+                        size: 50,
+                        rank: "knowledge" + tmpdata.id,
+                      }
+                      knowledgeData.nodes.push(tmpknowledgeNode)
+                      maxKnowledgeId = tmpdata.id
+                      let tmpRelations = []
+                      let objectRelation = JSON.parse(tmpdata.objectRelation)
+                      for (let i in objectRelation) {
+                        tmpRelation = objectRelation[i]
+                        tmpRelations.push(
+                          "ob" + tmpRelation.to
+                        )
+                      }
+                      relations["knowledge" + tmpdata.id] = tmpRelations
+                    }
+
+                    obsGraph = new G6.Graph({
+                      container: 'obs', // 指定挂载容器
+                      width: $("#obs-p").width(), // 图的宽度
+                      height: $("#obs-p").height(), // 图的高度\
+                      layout: { // Object，可选，布局的方法及其配置项，默认为 random 布局。
+                        type: 'force',
+
+                      },
+                      modes: {
+                        default: [{
+                            type: 'drag-canvas',
+                          },
+                          {
+                            type: 'zoom-canvas',
+                          },
+                          {
+                            type: 'drag-node',
+                            enableDelegate: true,
+                          },
+                          {
+                            type: 'tooltip',
+                            formatText(model) {
+                              return model.id;
+                            },
+                            offset: 20
+                          },
+                        ],
+                      },
+                      nodeStateStyles: {
+                        // ...见上方例子
+                        hover: {
+                          fill: '#00868B',
+                          // name 为 shape-name1 的子图形在该状态值下的样式
+                          'node-label': {
+                            fontSize: 15
+                          },
+                        },
+                      },
+                      defaultNode: {
+                        // ... 其他属性
+                        style: {
+                          fill: '#FF8C00',
+                          lineWidth: 0,
+                          // ... 其他属性
+                        },
+                      },
+                    });
+                    knowledgesGraph = new G6.Graph({
+                      container: 'knowledges', // 指定挂载容器
+                      width: $("#knowledge-p").width(), // 图的宽度
+                      height: $("#knowledge-p").height(), // 图的高度
+                      layout: { // Object，可选，布局的方法及其配置项，默认为 random 布局。
+                        type: 'force',
+
+                      },
+                      modes: {
+                        default: [{
+                            type: 'drag-canvas',
+                          },
+                          {
+                            type: 'zoom-canvas',
+                          },
+                          {
+                            type: 'drag-node',
+                            enableDelegate: true,
+                          },
+                          {
+                            type: 'tooltip',
+                            formatText(model) {
+                              console.log(model)
+                              return model.id;
+                            },
+                            offset: 20
+                          },
+                        ],
+                      },
+                      nodeStateStyles: {
+                        // ...见上方例子
+                        hover: {
+                          fill: '#d3adf7',
+                          // name 为 shape-name1 的子图形在该状态值下的样式
+                          'node-label': {
+                            fontSize: 15
+                          },
+                        },
+                      },
+                      defaultNode: {
+                        // ... 其他属性
+                        style: {
+                          fill: '#D1EEEE',
+
+                          // ... 其他属性
+                        },
+                      },
+                    });
+                    obsGraph.on('node:mouseenter', ev => {
+                      let rank = ev.item.defaultCfg.model.rank
+                      let nodes = knowledgesGraph.getNodes()
+                      let nodeRelation = relations[ev.item.defaultCfg.model.rank]
+                      for (let index in nodes) {
+                        knowledgesGraph.setItemState(nodes[index], "hover", false)
+                        for (let i in nodeRelation) {
+                          if (nodeRelation[i] == nodes[index].defaultCfg.model.rank) {
+                            knowledgesGraph.setItemState(nodes[index], "hover", true)
+                          }
+                        }
+                      }
+                    });
+                    knowledgesGraph.on('node:mouseenter', ev => {
+                      let rank = ev.item.defaultCfg.model.rank
+                      let nodes = obsGraph.getNodes()
+                      let nodeRelation = relations[ev.item.defaultCfg.model.rank]
+                      for (let index in nodes) {
+                        obsGraph.setItemState(nodes[index], "hover", false)
+                        for (let i in nodeRelation) {
+                          if (nodeRelation[i] == nodes[index].defaultCfg.model.rank) {
+                            obsGraph.setItemState(nodes[index], "hover", true)
+                          }
+                        }
+                      }
+                    });
+
+                    obsGraph.data(obsData)
+                    knowledgesGraph.data(knowledgeData)
+                    obsGraph.render(); // 渲染
+                    knowledgesGraph.render(); // 渲染
+                  })
+                  .catch(err => {
+                    console.error(err);
+                  })
+              })
+              .catch(err => {
+                console.error(err);
+              })
+
+          } else if (index == 2) {
+            app.mainView = false
+            app.frameLink = "examples/example1.html"
+          } else if (index == 3) {
+            app.mainView = false
+            app.frameLink = "examples/example2.html"
+          } else if (index == 4) {
+            app.mainView = false
+            app.frameLink = "examples/example3.html"
+          }
+        }
+
+      }
+    })
+  </script>
+  <!--<script type="text/javascript">-->
+      <!--function init(){-->
+          <!--var lins1 = echarts.init(document.getElementById('lins1'));-->
+          <!--lins1.setOption(option1);-->
+      <!--}-->
+  <!--</script>-->
+</body>
+
+</html>

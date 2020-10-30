@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天津大学</title>
+    <link href="styles/common.css" rel="stylesheet">
+    <script src="scripts/Plugin/jquery-3.3.1.min.js"></script>
+    <script src="scripts/Plugin/echarts.min.js"></script>
+    <script src="scripts/Plugin/bmap.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=WSrX4bCfgcjTfhWNCwvfI1ZnQnfZDxFW"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/index1.js"></script>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="scripts/sanlian.js"></script>
+    <script src="scripts/Plugin/laydate/laydate.js"></script>
+    <script type="text/javascript">
+        $(function(){
+          var lins1 = echarts.init(document.getElementById('lins1'));
+          lins1.setOption(option1);
+          var lineChart2 = echarts.init(document.getElementById('lineChart2'));
+          lineChart2.setOption(optionr);
+//            var guanxi = echarts.init(document.getElementById('guanxi'));
+//            guanxi.setOption(option3);
+        });
+    </script>
+    <!--<script type="text/javascript">-->
+        <!--function init1(){-->
+            <!--var lins1 = echarts.init(document.getElementById('lins1'));-->
+            <!--lins1.setOption(option1);-->
+            <!--var lineChart2 = echarts.init(document.getElementById('lineChart2'));-->
+            <!--lineChart2.setOption(optionr);-->
+        <!--}-->
+
+    <!--</script>-->
+</head>
+<body>
+<!--顶部-->
+
+<!--内容部分-->
+<header class="header left">
+    <div class="left nav">
+        <ul>
+            <li><i class="nav_2"></i><a href="quota.html"></a> </li>
+            <li><i class="nav_2"></i><a href="quota.html"></a> </li>
+            <li><i class="nav_3"></i><a href="trend.html"></a> </li>
+            <li><i class="nav_4"></i><a href="chronic.html"></a> </li>
+        </ul>
+    </div>
+    <div class="header_center left" style="position:relative">
+
+        <h2><strong>智慧司法-要素抽取</strong></h2>
+
+    </div>
+    <div class="right nav text_right">
+        <ul>
+
+        </ul>
+    </div>
+</header>
+<div class="con left">
+    <div class="div_any">
+        <div class="left div_any01">
+            <div class="div_any_child">
+                <div class="div_any_title"><img src="../images/title_1.png">租赁纠纷案由</div>
+                <div class="p_chart">
+                    <div class="main_table t_btn8">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>案件id</th>
+                                <th>案由</th>
+                                <th>关键字</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>租赁纠纷</td>
+                                <td>违约标准</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>租赁纠纷</td>
+                                <td>逾期缴纳房租</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>租赁纠纷</td>
+                                <td>拖欠水电费</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>租赁纠纷</td>
+                                <td>房租交付方式</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>租赁纠纷</td>
+                                <td>承租人</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!--<p id="pieChart1" class="p_chart"></p>-->
+
+            </div>
+            <div class="div_any_child">
+                <div class="div_any_title"><img src="../images/title_2.png">司法文书统计</div>
+                <div id="lins1" class="p_chart">
+                </div>
+            </div>
+        </div>
+        <div class="div_any02 left">
+            <div class="div_any_child div_height">
+                <div class="div_any_title any_title_width"><img src="../images/title_0.png">标签-单词关系图 </div>
+                <div id="guanxi" style="width:97.5%;height:95%;display: block;padding-left: 1.25%;padding-top:2.2%"></div>
+            </div>
+        </div>
+        <div class="right div_any01">
+            <div class="div_any_child">
+                <div class="div_any_title"><img src="../images/title_3.png">民间借贷纠纷</div>
+                <div class="p_chart">
+                    <div class="main_table t_btn8">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>案件id</th>
+                                <th>案由</th>
+                                <th>关键短语</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>民间借贷</td>
+                                <td>预扣利息</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>民间借贷</td>
+                                <td>借条</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>民间借贷</td>
+                                <td>交付方式</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>民间借贷</td>
+                                <td>共同债务</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>民间借贷</td>
+                                <td>共同债务</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="div_any_child">
+                <div class="div_any_title"><img src="../images/title_4.png">实验结果</div>
+                <p id="lineChart2" class="p_chart"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="header left">
+    <div class="left nav">
+        <ul>
+            <li><i class="nav_2"></i><a href="quota.html"></a> </li>
+            <li><i class="nav_2"></i><a href="quota.html"></a> </li>
+            <li><i class="nav_3"></i><a href="trend.html"></a> </li>
+            <li><i class="nav_4"></i><a href="chronic.html"></a> </li>
+        </ul>
+    </div>
+    <div class="left nav">
+        <ul>
+            <li><i class="nav_4"></i><a href="chronic.html"></a> </li>
+            <li class="nav_active"><i class="nav_1"></i><a href="index.html">数据分析</a> </li>
+            <li><i class="nav_2"></i><a href="../chouqu.jsp">要素抽取</a> </li>
+            <li><i class="nav_3"></i><a href="../chronic.html">数据管理</a> </li>
+        </ul>
+    </div>
+
+
+</header>
+<script type="text/javascript">
+    $(function(){
+//          var lins1 = echarts.init(document.getElementById('lins1'));
+//          lins1.setOption(option1);
+        //          var lineChart2 = echarts.init(document.getElementById('lineChart2'));
+        //          lineChart2.setOption(optionr);
+        var guanxi = echarts.init(document.getElementById('guanxi'));
+        guanxi.setOption(option3);
+    });
+</script>
+</body>
+</html>

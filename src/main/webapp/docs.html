@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Home</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="all,follow">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Fontastic Custom icon font-->
+  <link rel="stylesheet" href="css/fontastic.css">
+  <!-- Google fonts - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/tree.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page" id="app" v-cloak>
+    <!-- Main Navbar-->
+    <header class="header">
+      <nav class="navbar">
+        <!-- Search Box-->
+        <div class="search-box">
+          <button class="dismiss"><i class="icon-close"></i></button>
+
+        </div>
+        <div class="container-fluid">
+          <div class="navbar-holder d-flex align-items-center justify-content-between">
+            <!-- Navbar Header-->
+            <div class="navbar-header">
+              <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <div class="brand-text d-none d-lg-inline-block"><strong>社区风险知识图谱管理系统</strong></div>
+                <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>社区风险知识图谱管理系统</strong></div>
+              </a>
+              <!-- Toggle Button--><a id="toggle-btn" href="#"
+                class="menu-btn active"><span></span><span></span><span></span></a>
+            </div>
+            <!-- Navbar Menu -->
+            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+
+              <!-- Logout    -->
+              <li class="nav-item" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"><a href="#"
+                  class="nav-link logout"></a> <span class="d-none d-sm-inline">退出登录</span><i
+                  class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+      <!-- Side Navbar -->
+      <nav class="side-navbar">
+        <!-- Sidebar Header-->
+        <div class="sidebar-header d-flex align-items-center">
+          <div class="title">
+            <h1 class="h4">admin</h1>
+          </div>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a href="index.html"> <i class="icon-home"></i>导览 </a></li>
+          <li><a href="#object" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>本体操作</a>
+            <ul id="object" class="collapse list-unstyled ">
+              <li><a href="objectAppend.html">本体添加</a></li>
+              <li><a href="objectOpera.html">本体查看与修改</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#knowledge" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>知识操作</a>
+            <ul id="knowledge" class="collapse list-unstyled ">
+              <li><a href="knowledgeAppend.html">知识添加</a></li>
+              <li><a href="knowledgeOpera.html">知识查看与修改</a></li>
+            </ul>
+          </li>
+          <li><a href="docs.html"> <i class="icon-padnote"></i>文档操作 </a></li>
+          <li><a href="#object1" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>要素抽取</a>
+            <ul id="object1" class="collapse list-unstyled ">
+              <li><a href="resultTest.html">数据分析与结果</a></li>
+              <li><a href="extract.html">司法要素抽取</a></li>
+            </ul>
+          </li>
+          <li><a href="#object2" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>信息抽取管理</a>
+            <ul id="object2" class="collapse list-unstyled ">
+              <li><a href="elementAppend.html">案件要素管理</a></li>
+              <li><a href="personal_attribute.html">人员属性管理</a></li>
+              <li><a href="personal_case.html">涉案信息管理</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="graph.html"> <i class="fa fa-bar-chart"></i>知识图谱图例 </a></li>
+        </ul>
+      </nav>
+      <div class="content-inner">
+        <!-- Page Header-->
+        <header class="page-header">
+          <div class="container-fluid">
+            <h2 class="no-margin-bottom">文档查看</h2>
+          </div>
+        </header>
+        <!-- Dashboard Counts Section-->
+        <section class="dashboard-counts no-padding-bottom" style="padding-top: 0px;">
+          <div class="row" style="height: 55em;background-color: #ffffff; padding-top: 0px;">
+
+            <div class="col-lg-4" style="height: 55em;">
+              <div class="treebox scrollXY" style="background-color:#fff;">
+                <div class="tree" style="width: 100% !important;">
+                  <ul>
+                    <li>
+                      <div class="close_menu"><span></span><a class="showPoint">应急预案</a></div>
+                      <ul>
+                        <li v-for="item in docs">
+
+                          <div class="close_menu"><span></span><a class="showPoint"
+                              v-bind:title="item.name" @click="changeDoc(item)">{{item.name}}</a></div>
+                          <ul>
+                            <li>
+
+                              <div class="close_menu"><span></span><a class="showPoint">相关本体</a></div>
+                              <ul>
+                                <li v-for="(item2,index2) in item.objectRelation">
+                                  <div><a class="showPoint">{{item2.name}}</a></div>
+                                </li>
+                              </ul>
+                              <div class="close_menu"><span></span><a class="showPoint">相关知识</a></div>
+                              <ul>
+                                <li v-for="(item3,index3) in item.knowledgeRelation">
+                                  <div><a class="showPoint">{{item3.name}}</a></div>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8" style="height: 55em; overflow-y: scroll;">
+              <table class="table table-bordered col-lg-12" style="margin-top:1em">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>所属文档</th>
+                    <th>关联类型</th>
+                    <th>关系描述</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="tr1 in focusDoc.objectRelation">
+                    <td>O{{tr1.to}}</td>
+                    <td><a href="#">{{tr1.name}}</a></td>
+                    <td><a href="#">{{focusDoc.name}}</a></td>
+                    <td><a href="#">实体</a></td>
+                    <td><a href="#">{{tr1.content}}</a></td>
+                    <td><a href="objectOpera.html"><i class="fa fa-wrench" style="cursor: pointer;"
+                       title="修改"></i></a></td>
+                  </tr>
+                  <tr v-for="tr2 in focusDoc.knowledgeRelation">
+                    <td>K{{tr2.to}}</td>
+                    <td><a href="#">{{tr2.name}}</a></td>
+                    <td><a href="#">{{focusDoc.name}}</a></td>
+                    <td><a href="#">知识</a></td>
+                    <td><a href="#">{{tr2.content}}</a></td>
+                    <td><a href="knowledgeOpera.html"><i class="fa fa-wrench" style="cursor: pointer;"
+                      title="修改"></i></a></td>
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+          </div>
+
+        </section>
+        <!-- Projects Section-->
+        <!--  -->
+        <!-- Page Footer-->
+
+      </div>
+    </div>
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">退出系统</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定退出并清除您的登录凭据吗？
+          </div>
+
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="logout()">退出</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript files-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <!-- Main File-->
+  <script src="js/front.js"></script>
+
+  <script src="js/axios.min.js"></script>
+  <script src="js/vue.min.js"></script>
+
+  <script src="js/treescroll.min.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        user: {
+          username: "",
+          password: ""
+        },
+        docs: [],
+        focusDoc:{}
+      },
+      created () {
+        axios.get("/knowledgeGraph/doc/findAll", {})
+          .then(res => {
+            app.docs = res.data
+            for (let index in app.docs) {
+              app.docs[index].objectRelation = JSON.parse(res.data[index].objectRelation)
+              app.docs[index].knowledgeRelation = JSON.parse(res.data[index].knowledgeRelation)
+              app.docs[index].docRelation = JSON.parse(res.data[index].docRelation)
+            }
+            app.focusDoc = app.docs[0]
+
+          })
+          .catch(err => {
+            console.error(err);
+          })
+      },
+      mounted() {
+        this.user = $.cookie("user")
+        if (this.user == null) {
+          location.href = "login.html"
+        }
+
+        $(document).ready(function () {
+          function randomHexColor() { //随机生成十六进制颜色
+            var hex = Math.floor(Math.random() * 16777216).toString(16); //生成ffffff以内16进制数
+            while (hex.length < 6) { //while循环判断hex位数，少于6位前面加0凑够6位
+              hex = '0' + hex;
+            }
+            return '#' + hex; //返回‘#'开头16进制颜色
+          }
+          $(".close_menu").each(function () {
+            $(this).siblings("ul").hide();
+          });
+          $(".ontree").each(function () {
+            $(this).parents("ul").show();
+            $(this).parents("ul").siblings().addClass("open_menu").removeClass("close_menu");
+          });
+          $(document).on("click", ".close_menu span", function () {
+            $(this).parent().addClass("open_menu").removeClass("close_menu");
+            $(this).parent().siblings("ul").fadeIn();
+            treewidth();
+          });
+          $(document).on("click", ".open_menu span", function () {
+            $(this).parent().parent().find(".open_menu").addClass("close_menu").removeClass("open_menu");
+            $(this).parent().parent().find("ul").hide();
+            treewidth();
+          });
+          $(document).on("click", ".tree a", function () {
+            $(".ontree").removeClass("ontree");
+            $(this).addClass("ontree");
+          });
+          $(document).on("click", "#showStart", function () {
+            if ($(".flex-center").html() != undefined) {
+              return false
+            }
+
+            $("body").append(
+              '<div class="flex-center"><h3 style="color: #fff;">系统加载中，请稍等...</h3><span class="container"><span id="progressBar" class="h-100P bar"></span></span></div>'
+            );
+            var percentage = 0;
+            loadDocName = docPointList[Math.floor((Math.random() * docPointList.length))].name
+            option.series[0].data.push({
+              name: "预备加载关联词",
+              symbolSize: 100,
+              value: 50,
+              itemStyle: {
+                color: randomHexColor()
+              },
+              label: {
+                show: true,
+                color: "#FFF",
+                formatter: '{b}',
+                fontSize: 23,
+              },
+            })
+            option.series[0].data = []
+            interval = setInterval(function () {
+
+              $('h3').text(loadDocName + "解析中");
+              if (percentage < 100) {
+                percentage++;
+                var widthTemp = (percentage / 10).toFixed(1) + '%';
+                $('#progressBar').css('width', widthTemp);
+                $('#progressBar').text(widthTemp);
+                loadWord = bigData['event_level']['level3'][Math.floor((Math.random() * bigData[
+                  'event_level']['level3'].length))][1]
+                $('h3').text(loadDocName + "---检索相关关系---" + loadWord);
+
+                tmpword = {
+                  name: loadWord,
+                  symbolSize: 100,
+                  value: 50,
+                  itemStyle: {
+                    color: randomHexColor()
+                  },
+                  label: {
+                    show: true,
+                    color: "#FFF",
+                    formatter: '{b}',
+                    fontSize: 23,
+                  },
+                }
+                option.series[0].data.push(tmpword)
+                changeData();
+              } else {
+                loadDocName = docPointList[Math.floor((Math.random() * docPointList.length))].name
+                percentage = 0
+              }
+            }, 2000);
+
+          });
+
+          treewidth();
+
+          function treewidth() {
+            var items = new Array;
+            var parents = new Array;
+            var text_num = 0,
+              parent_num = 0;
+            $(".tree a").each(function () {
+              if ($(this).is(":hidden") == false) {
+                items.push($(this).text().length);
+                parents.push($(this).parents("ul").length);
+              }
+            });
+            //document.title="最多字数："+Math.max.apply(null, items)+",最大层数："+Math.max.apply(null, parents);
+            text_num = Math.max.apply(null, items);
+            parent_num = Math.max.apply(null, parents);
+            $(".tree").width(parent_num * 20 + text_num * 14 + 44);
+            scrollsXY(".scrollXY");
+          }
+        });
+
+        function scrollsXY(box) { //XY轴滚动最终版
+
+          var pointX = 0,
+            left = 0;
+          $(box).each(function () {
+            var box = $(this);
+            var W = box.width() - 18;
+            var cententW = box.children().width();
+            var btnW = W / cententW * W;
+            var scrollX = '<div class="scrollX_box" boxW="' + W + '" cententW="' + cententW + '" move="false">';
+            scrollX += '<div class="scrollX_btn" lefts="0">';
+            scrollX +=
+              '<div style="background-color:#696979;position:absolute;width:100%;top:6px;height:6px;border-radius:4px"></div>';
+            scrollX += '</div></div>';
+            box.parent().css({
+              "position": "relative"
+            });
+            box.siblings(".scrollX_box").remove();
+            box.before(scrollX);
+            if (W / cententW < 1) {
+              box.siblings(".scrollX_box").children(".scrollX_btn").show();
+            } else {
+              box.siblings(".scrollX_box").children(".scrollX_btn").hide();
+            }
+            box.siblings(".scrollX_box").css({
+              "width": W,
+              "position": "absolute",
+              "bottom": 0,
+              "left": 0,
+              "z-index": 0,
+              "background-color": "#fff",
+              "height": "18px",
+              "border-right": "solid 18px #fff"
+            });
+            box.siblings(".scrollX_box").children(".scrollX_btn").css({
+              "width": btnW,
+              "position": "relative",
+              "cursor": "pointer",
+              "height": "18px"
+            });
+            $(".scrollX_btn").hover(function () {
+              $(this).children().css({
+                "background-color": "#9797ac",
+              });
+            }, function () {
+              $(this).children().css({
+                "background-color": "#696979",
+              });
+              move = $(this).parent().attr("move", "false");
+            });
+            box.scroll(function () {
+              var X = $(this).scrollLeft();
+              var boxW = $(this).siblings(".scrollX_box").attr("boxW")
+              var cententW = $(this).siblings(".scrollX_box").attr("cententW");
+              $(this).siblings(".scrollX_box").children(".scrollX_btn").css({
+                "margin-left": X / cententW * boxW
+              });
+              $(this).siblings(".scrollX_box").children(".scrollX_btn").attr("lefts", X / cententW * boxW);
+            });
+            $(".scrollX_btn").mousedown(function (e) {
+              pointX = e.pageX; //这里可以得到鼠标Y坐标
+              left = $(this).attr("lefts") * 1;
+              $(this).parent().attr("move", "true");
+              $(this).focus();
+            });
+            $(".scrollX_btn").mousemove(function (e) {
+              e.stopPropagation();
+              if ($(this).parent().attr("move") == "true") {
+                var moveX = e.pageX - pointX;
+                var boxW = $(this).parent().attr("boxW")
+                var cententW = $(this).parent().attr("cententW");
+                var btnW = boxW / cententW * boxW;
+                //$(this).siblings().unbind();
+                $(this).css({
+                  "margin-left": left + moveX
+                });
+                $(this).attr("lefts", left + moveX);
+                $(this).parent().siblings().scrollLeft((left + moveX) / boxW * cententW);
+                if (left + moveX > boxW - btnW) {
+                  $(this).css({
+                    "margin-left": boxW - btnW
+                  });
+                  $(this).attr("lefts", boxW - btnW);
+                } else if (left + moveX < 0) {
+                  $(this).css({
+                    "margin-left": 0
+                  });
+                  $(this).attr("lefts", 0);
+                }
+              }
+            });
+            $(".scrollX_btn").mouseup(function (e) {
+              $(this).parent().attr("move", "false");
+              $(this).focus();
+            });
+          });
+          var pointY = 0,
+            top = 0;
+          $(box).each(function () {
+            var box = $(this);
+            var H = box.height() - 18;
+            var cententH = box.children().height();
+            var btnH = H / cententH * H;
+            var go_top = box.scrollTop() / cententH * H;
+            var scrollY = '<div class="scroll_box" boxH="' + H + '" cententH="' + cententH + '" move="false">';
+            scrollY += '<div class="scroll_btn" tops="' + go_top + '">';
+            scrollY +=
+              '<div style="background-color:#696979;position:absolute;width:6px;left:6px;height:100%;border-radius:4px"></div>';
+            scrollY += '</div></div>';
+            box.parent().css({
+              "position": "relative"
+            });
+            box.siblings(".scroll_box").remove();
+            box.before(scrollY);
+            if (H / cententH < 1) {
+              box.siblings(".scroll_box").children(".scroll_btn").show();
+            } else {
+              box.siblings(".scroll_box").children(".scroll_btn").hide();
+            }
+            box.siblings(".scroll_box").css({
+              "width": "18px",
+              "position": "absolute",
+              "top": 0,
+              "right": 0,
+              "z-index": 0,
+              "background-color": "#fff",
+              "height": H,
+              "border-bottom": "solid 18px #fff"
+            });
+            box.siblings(".scroll_box").children(".scroll_btn").css({
+              "width": "100%",
+              "position": "relative",
+              "cursor": "pointer",
+              "height": btnH,
+              "margin-top": go_top
+            });
+            $(".scroll_btn").hover(function () {
+              $(this).children().css({
+                "background-color": "#9797ac",
+              });
+            }, function () {
+              $(this).children().css({
+                "background-color": "#696979",
+              });
+              move = $(this).parent().attr("move", "false");
+              addscroll(box);
+            });
+            addscroll(box);
+            $(".scroll_btn").mousedown(function (e) {
+              pointY = e.pageY; //这里可以得到鼠标Y坐标
+              top = $(this).attr("tops") * 1;
+              $(this).parent().attr("move", "true");
+              $(this).focus();
+            });
+            $(".scroll_btn").mousemove(function (e) {
+              e.stopPropagation();
+              if ($(this).parent().attr("move") == "true") {
+                var moveY = e.pageY - pointY;
+                var boxH = $(this).parent().attr("boxH")
+                var cententH = $(this).parent().attr("cententH");
+                var btnH = boxH / cententH * boxH;
+                $(this).siblings().unbind();
+                $(this).css({
+                  "margin-top": top + moveY
+                });
+                $(this).attr("tops", top + moveY);
+                $(this).parent().siblings().scrollTop((top + moveY) / boxH * cententH);
+                if (top + moveY > boxH - btnH) {
+                  $(this).css({
+                    "margin-top": boxH - btnH
+                  });
+                  $(this).attr("tops", boxH - btnH);
+                } else if (top + moveY < 0) {
+                  $(this).css({
+                    "margin-top": 0
+                  });
+                  $(this).attr("tops", 0);
+                }
+              }
+            });
+            $(".scroll_btn").mouseup(function (e) {
+              $(this).parent().attr("move", "false")
+              addscroll(box);
+            });
+          });
+
+          function addscroll(box) {
+            box.scroll(function () {
+              var Y = $(this).scrollTop();
+              var boxH = $(this).siblings(".scroll_box").attr("boxH")
+              var cententH = $(this).siblings(".scroll_box").attr("cententH");
+              $(this).siblings(".scroll_box").children(".scroll_btn").css({
+                "margin-top": Y / cententH * boxH
+              });
+              $(this).siblings(".scroll_box").children(".scroll_btn").attr("tops", Y / cententH * boxH);
+            });
+          }
+        }
+        
+      },
+      methods: {
+        logout: function () {
+          $.removeCookie('user');
+          location.href = "login.html"
+        },
+        changeDoc:function(item){
+          app.focusDoc = item
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

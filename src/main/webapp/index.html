@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Home</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="robots" content="all,follow">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <!-- Fontastic Custom icon font-->
+  <link rel="stylesheet" href="css/fontastic.css">
+  <!-- Google fonts - Poppins -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page" id="app" v-cloak>
+    <!-- Main Navbar-->
+    <header class="header">
+      <nav class="navbar">
+        <!-- Search Box-->
+        <div class="search-box">
+          <button class="dismiss"><i class="icon-close"></i></button>
+          
+        </div>
+        <div class="container-fluid">
+          <div class="navbar-holder d-flex align-items-center justify-content-between">
+            <!-- Navbar Header-->
+            <div class="navbar-header">
+              <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                <div class="brand-text d-none d-lg-inline-block"><strong>知识图谱管理系统</strong></div>
+                <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>知识图谱管理系统</strong></div>
+              </a>
+              <!-- Toggle Button--><a id="toggle-btn" href="#"
+                class="menu-btn active"><span></span><span></span><span></span></a>
+            </div>
+            <!-- Navbar Menu -->
+            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+
+              <!-- Logout    -->
+              <li class="nav-item" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"><a href="#" class="nav-link logout"></a> <span
+                    class="d-none d-sm-inline">退出登录</span><i class="fa fa-sign-out"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+      <!-- Side Navbar -->
+      <nav class="side-navbar">
+        <!-- Sidebar Header-->
+        <div class="sidebar-header d-flex align-items-center">
+          <div class="title">
+            <h1 class="h4">admin</h1>
+          </div>
+        </div>
+
+        <ul class="list-unstyled">
+          <li><a href="index.html"> <i class="icon-home"></i>导览 </a></li>
+          <li><a href="#object" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>本体操作</a>
+            <ul id="object" class="collapse list-unstyled ">
+              <li><a href="objectAppend.html">本体添加</a></li>
+              <li><a href="objectOpera.html">本体查看与修改</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#knowledge" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>知识操作</a>
+            <ul id="knowledge" class="collapse list-unstyled ">
+              <li><a href="knowledgeAppend.html">知识添加</a></li>
+              <li><a href="knowledgeOpera.html">知识查看与修改</a></li>
+            </ul>
+          </li>
+          <li><a href="docs.html"> <i class="icon-padnote"></i>文档操作 </a></li>
+          <li><a href="#object1" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>要素抽取</a>
+            <ul id="object1" class="collapse list-unstyled ">
+              <li><a href="resultTest.html">数据分析与结果</a></li>
+              <li><a href="extract.html">司法要素抽取</a></li>
+            </ul>
+          </li>
+          <li><a href="#object2" aria-expanded="false" data-toggle="collapse"> <i
+                  class="icon-interface-windows"></i>信息抽取管理</a>
+            <ul id="object2" class="collapse list-unstyled ">
+              <li><a href="elementAppend.html">案件要素管理</a></li>
+              <li><a href="personal_attribute.html">人员属性管理</a></li>
+              <li><a href="personal_case.html">涉案信息管理</a></li>
+            </ul>
+          </li>
+          <li class="active"><a href="graph.html"> <i class="fa fa-bar-chart"></i>知识图谱图例 </a></li>
+        </ul>
+      </nav>
+      <div class="content-inner">
+        <!-- Page Header-->
+        <header class="page-header">
+          <div class="container-fluid">
+            <h2 class="no-margin-bottom">用户查看</h2>
+          </div>
+        </header>
+        <!-- Dashboard Counts Section-->
+        <section class="dashboard-counts no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row bg-white has-shadow">
+              <!-- Item -->
+              <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                  <div class="icon bg-violet"><i class="icon-user"></i></div>
+                  <div class="title"><span>当前用户</span>
+                    
+                  </div>
+                  <div class="number"><strong>3</strong></div>
+                </div>
+              </div>
+              <!-- Item -->
+              <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                  <div class="icon bg-red"><i class="icon-padnote"></i></div>
+                  <div class="title"><span>本体数量</span>
+                  </div>
+                  <div class="number"><strong>70</strong></div>
+                </div>
+              </div>
+              <!-- Item -->
+              <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                  <div class="icon bg-green"><i class="icon-bill"></i></div>
+                  <div class="title"><span>知识数量</span>
+                  </div>
+                  <div class="number"><strong>40</strong></div>
+                </div>
+              </div>
+              <!-- Item -->
+              <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                  <div class="icon bg-orange"><i class="icon-check"></i></div>
+                  <div class="title"><span>归档文献</span>
+                  </div>
+                  <div class="number"><strong>50</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Dashboard Header Section    -->
+        <section class="dashboard-header">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- Statistics -->
+              <div class="statistics col-lg-3 col-12">
+                <div class="statistic d-flex align-items-center bg-white has-shadow">
+                  <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
+                  <div class="text"><strong>234</strong><br><small>知识编辑次数</small></div>
+                </div>
+                <div class="statistic d-flex align-items-center bg-white has-shadow">
+                  <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
+                  <div class="text"><strong>47</strong><br><small>知识录入次数</small></div>
+                </div>
+                <div class="statistic d-flex align-items-center bg-white has-shadow">
+                  <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
+                  <div class="text"><strong>1007</strong><br><small>总访问量</small></div>
+                </div>
+              </div>
+              <!-- Line Chart            -->
+              <div class="chart col-lg-6 col-12">
+                <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
+                  <canvas id="lineCahrt"></canvas>
+                </div>
+              </div>
+              <div class="chart col-lg-3 col-12">
+                <!-- Bar Chart   -->
+
+                <!-- Numbers-->
+                <div class="statistic d-flex align-items-center bg-white has-shadow">
+                  <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
+                  <div class="text"><strong>87.6%</strong><br><small>关联率</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Projects Section-->
+        <!--  -->
+        <!-- Page Footer-->
+        
+      </div>
+    </div>
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+     
+          <!-- 模态框头部 -->
+          <div class="modal-header">
+            <h4 class="modal-title">退出系统</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+     
+          <!-- 模态框主体 -->
+          <div class="modal-body">
+            确定退出并清除您的登录凭据吗？
+          </div>
+     
+          <!-- 模态框底部 -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="logout()">退出</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          </div>
+     
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript files-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper.js/umd/popper.min.js"> </script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+  <script src="js/charts-home.js"></script>
+  <!-- Main File-->
+  <script src="js/front.js"></script>
+  
+  <script src="js/axios.min.js"></script>
+  <script src="js/vue.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+            user:{
+              username:"",
+              password:""
+            }
+        },
+        mounted() {
+          this.user = $.cookie("user")
+          if(this.user == null){
+            location.href = "login.html"
+          }
+        },
+        methods: {
+            logout:function(){
+              $.removeCookie('user');
+              location.href = "login.html"
+            }
+        }
+      })
+    </script>
+</body>
+
+</html>

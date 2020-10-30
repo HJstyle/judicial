@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/sweetalert.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .set-btn {
+            margin-top: 0.5em;
+            border-radius: 0.5em;
+            box-shadow: none;
+        }
+
+        .data-table {
+            height: 10em !important
+        }
+
+        .data-model {
+            height: 40rem;
+            overflow-y: scroll;
+        }
+
+        .delete-icon :hover {
+            background-color: crimson;
+            color: white;
+            cursor: pointer;
+        }
+
+        .add-icon :hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+        .relation-model {
+            width: 30rem !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="page" id="app" v-cloak>
+    <!-- Main Navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <!-- Search Box-->
+            <div class="search-box">
+                <button class="dismiss"><i class="icon-close"></i></button>
+
+            </div>
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <!-- Navbar Header-->
+                    <div class="navbar-header">
+                        <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                        <div class="brand-text d-none d-lg-inline-block"><strong>基于本体的人物属性抽取系统</strong></div>
+                        <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>基于本体的人物属性抽取系统</strong></div>
+                    </a>
+                        <!-- Toggle Button--><a id="toggle-btn" href="#"
+                                                class="menu-btn active"><span></span><span></span><span></span></a>
+                    </div>
+                    <!-- Navbar Menu -->
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+
+                        <!-- Logout    -->
+                        <li class="nav-item" data-toggle="modal" data-target="#myModal" style="cursor: pointer;"><a href="#"
+                                                                                                                    class="nav-link logout"></a> <span class="d-none d-sm-inline">退出登录</span><i
+                                class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center">
+                <div class="title">
+                    <h1 class="h4">admin</h1>
+                </div>
+            </div>
+
+            <ul class="list-unstyled">
+                <li><a href="index.html"> <i class="icon-home"></i>导览 </a></li>
+                <li><a href="#object" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>本体操作</a>
+                    <ul id="object" class="collapse list-unstyled ">
+                        <li><a href="objectAppend.html">本体添加</a></li>
+                        <li><a href="objectOpera.html">本体查看与修改</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#knowledge" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>知识操作</a>
+                    <ul id="knowledge" class="collapse list-unstyled ">
+                        <li><a href="knowledgeAppend.html">知识添加</a></li>
+                        <li><a href="knowledgeOpera.html">知识查看与修改</a></li>
+                    </ul>
+                </li>
+                <li><a href="docs.html"> <i class="icon-padnote"></i>文档操作 </a></li>
+                <li><a href="#object1" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>要素抽取</a>
+                    <ul id="object1" class="collapse list-unstyled ">
+                        <li><a href="resultTest.html">数据分析与结果</a></li>
+                        <li><a href="extract.html">司法要素抽取</a></li>
+                    </ul>
+                </li>
+                <li><a href="#object2" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>信息抽取管理</a>
+                    <ul id="object2" class="collapse list-unstyled ">
+                        <li><a href="elementAppend.html">案件要素管理</a></li>
+                        <li><a href="personal_attribute.html">人员属性管理</a></li>
+                        <li><a href="personal_case.html">涉案信息管理</a></li>
+                    </ul>
+                </li>
+                <li class="active"><a href="graph.html"> <i class="fa fa-bar-chart"></i>知识图谱图例 </a></li>
+            </ul>
+        </nav>
+        <div class="content-inner">
+            <!-- Page Header-->
+            <section class="dashboard-counts no-padding-bottom">
+                <div class="container-fluid">
+                    <div class="row bg-white has-shadow">
+                        <!-- Item -->
+                        <div class="input-group col-lg-10">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">本体名称</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="键入本体名称" v-model="newOb.name">
+                        </div>
+
+                        <div class="input-group col-lg-10">
+
+                            <button class="col-lg-2 offset-lg-1 set-btn btn-outline-primary" data-toggle="modal"
+                                    data-target="#properties">添加属性</button>
+                            <button class="col-lg-2 offset-lg-1 set-btn btn-outline-primary" data-toggle="modal"
+                                    data-target="#relations">添加关系</button>
+
+                            <button class="col-lg-2 offset-lg-1 set-btn btn-outline-success" @click="submitOb()">提交</button>
+
+                        </div>
+                    </div>
+                    </button>
+                    <div>
+                        <select v-model="produceActive"@change="gradeChange($event)" >
+                            <option v-for="(item,index) in productList" :key="index" :value='item.id'>{{item.title}}</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+            <!-- Dashboard Header Section    -->
+            <section class="dashboard-counts no-padding-bottom"style="padding-top: 1rem !important;">
+                <div class="container-fluid">
+                    <div class="row bg-white has-shadow">
+                        <!-- Statistics -->
+                        <table class="table table-hover col-lg-12 data-table" id="data-table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>本体名</th>
+                                <th>属性数</th>
+                                <th>关系数</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr v-for="(item, index) in obs.slice((nowPage-1)*5,nowPage*5)" :key="index">
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.propertiesNum}}</td>
+                                <td>{{item.relationsNum}}</td>
+                                <td><i class="fa fa-trash-o" style="cursor: pointer;" data-toggle="tooltip" title="删除"
+                                       @click="deleteItem(item)"></i>&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <ul class="pagination col-lg-6 offset-lg-3">
+
+                <span v-for="i in pageNum"  v-show="(Math.abs(i - nowPage) < 4)">
+                  <li class="page-item active" v-if="nowPage == i"><a class="page-link" href="#data-table"
+                                                                      @click="changePage(i)">{{i}}</a></li>
+                  <li class="page-item" v-else><a class="page-link" href="#data-table" @click="changePage(i)">{{i}}</a>
+                  </li>
+                </span>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        </section>
+        <!-- Projects Section-->
+        <!--  -->
+        <!-- Page Footer-->
+
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">退出系统</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    确定退出并清除您的登录凭据吗？
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @click="logout()">退出</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="properties">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">添加属性</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- 模态框主体 -->
+                <div class="modal-body data-model">
+
+                    <div class="row" v-for="(item, index) in newOb.property" :key="index">
+
+                        <div class="input-group col-lg-5">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">属性名</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="item.name">
+                        </div>
+
+                        <div class="input-group col-lg-5">
+                            <div class="input-group-append">
+                                <span class="input-group-text">属性值</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="item.value">
+
+                        </div>
+                        <div class="input-group col-lg-1">
+                            <div class="input-group-append delete-icon">
+                                <span class="input-group-text"><i class="fa fa-trash-o" @click="deleteProperty(index)"></i></span>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-lg-2 offset-lg-5 add-icon" @click="addProperty()">
+                        <br />
+                        <i class="fa fa-plus-circle fa-lg add-icon" style="font-size: 2em;"></i>
+                    </div>
+
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="relations">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">添加关系</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- 模态框主体 -->
+                <div class="modal-body data-model relation-model">
+
+                    <div class="row" v-for="(item, index) in newOb.relation" :key="index">
+
+                        <div class="input-group col-lg-5">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">目标id</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="item.to">
+                        </div>
+
+                        <div class="input-group col-lg-5">
+                            <div class="input-group-append">
+                                <span class="input-group-text">描述</span>
+                            </div>
+                            <input type="text" class="form-control" v-model="item.content">
+
+                        </div>
+                        <div class="input-group col-lg-5">
+                            <div class="input-group-append">
+                                <span class="input-group-text">类型</span>
+                            </div>
+                            <select class="form-control" v-model="item.type">
+                                <option value="1">本体关系</option>
+                                <option value="2">知识关系</option>
+                                <option value="3">文档关系</option>
+                            </select>
+                        </div>
+                        <div class="input-group col-lg-1 offset-lg-3">
+                            <div class="input-group-append delete-icon">
+                                <span class="input-group-text"><i class="fa fa-trash-o" @click="deleteRelation(index)"></i></span>
+                            </div>
+
+
+                        </div>
+
+                        <hr>
+
+
+                    </div>
+                    <div class="col-lg-2 offset-lg-5 add-icon" @click="addRelation()">
+                        <br />
+                        <i class="fa fa-plus-circle fa-lg add-icon" style="font-size: 2em;"></i>
+                    </div>
+
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript files-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/popper.js/umd/popper.min.js"> </script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<script src="js/charts-home.js"></script>
+<script src="js/sweetalert-dev.js"></script>
+<!-- Main File-->
+<script src="js/front.js"></script>
+
+<script src="js/axios.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script>
+    app = new Vue({
+        el: '#app',
+        data: {
+            productList:[{id:0,title:"选择"},{id:1,title:"社区风险"},{id:2,title:"司法领域"},{id:3,title:"人员画像"}],
+            produceActive:0,
+            user: {
+                username: "",
+                password: ""
+            },
+            newOb: {
+                id: "",
+                name: "",
+                property: [],
+                knowledgeRelation: [],
+                objectRelation: [],
+                docRelation: [],
+                relation: []
+            },
+            obs: [{"id":1,"name":"人员","propertiesNum":1,"relationsNum":3},
+                {"id":2,"name":"机构","propertiesNum":2,"relationsNum":4},
+                {"id":3,"name":"罪名","propertiesNum":2,"relationsNum":5},
+                {"id":4,"name":"裁决时间","propertiesNum":1,"relationsNum":3},
+                {"id":5,"name":"身份","propertiesNum":1,"relationsNum":3},
+                {"id":6,"name":"出生日期","propertiesNum":1,"relationsNum":5},
+                {"id":7,"name":"现在状态","propertiesNum":1,"relationsNum":1},
+                {"id":8,"name":"表现","propertiesNum":1,"relationsNum":2},
+                {"id":9,"name":"奖惩","propertiesNum":2,"relationsNum":3},
+                {"id":10,"name":"案件","propertiesNum":1,"relationsNum":3},
+                {"id":11,"name":"催讨","propertiesNum":1,"relationsNum":2},],
+            pageNum: 4,
+            nowPage: 1,
+            docs: [],
+            knowledges: []
+
+        },
+        mounted() {
+            this.user = $.cookie("user")
+            if (this.user == null) {
+                location.href = "login.html"
+            }
+            $('[data-toggle="tooltip"]').tooltip();
+//        axios.get('/knowledgeGraph/ob/findAll', {})
+//          .then(res => {
+//            let obs = res.data
+//            for (let index in obs) {
+//              obs[index].property = JSON.parse(obs[index].property)
+//              obs[index].knowledgeRelation = JSON.parse(obs[index].knowledgeRelation)
+//              obs[index].objectRelation = JSON.parse(obs[index].objectRelation)
+//              obs[index].docRelation = JSON.parse(obs[index].docRelation)
+//              obs[index]["propertiesNum"] = obs[index].property.length
+//              obs[index]["relationsNum"] = obs[index].knowledgeRelation.length + obs[index].objectRelation
+//                .length + obs[index].docRelation.length
+//            }
+//            app.pageNum = Math.ceil(obs.length / 5)
+//            app.obs = obs
+//          })
+//          .catch(err => {
+//            console.error(err);
+//          })
+
+            axios.get('/knowledgeGraph/doc/findAll', {})
+                .then(res => {
+                    let docs = res.data
+                    for (let index in docs) {
+                        docs[index].property = JSON.parse(docs[index].property)
+                        docs[index].knowledgeRelation = JSON.parse(docs[index].knowledgeRelation)
+                        docs[index].objectRelation = JSON.parse(docs[index].objectRelation)
+                        docs[index].docRelation = JSON.parse(docs[index].docRelation)
+                        docs[index]["propertiesNum"] = docs[index].property.length
+                        docs[index]["relationsNum"] = docs[index].knowledgeRelation.length + docs[index].objectRelation
+                            .length + docs[index].docRelation.length
+                    }
+
+                    app.docs = docs
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+
+            axios.get('/knowledgeGraph/knowledge/findAll', {})
+                .then(res => {
+                    let knowledges = res.data
+                    for (let index in knowledges) {
+                        knowledges[index].property = JSON.parse(knowledges[index].property)
+                        knowledges[index].knowledgeRelation = JSON.parse(knowledges[index].knowledgeRelation)
+                        knowledges[index].objectRelation = JSON.parse(knowledges[index].objectRelation)
+                        knowledges[index].docRelation = JSON.parse(knowledges[index].docRelation)
+                        knowledges[index]["propertiesNum"] = knowledges[index].property.length
+                        knowledges[index]["relationsNum"] = knowledges[index].knowledgeRelation.length + knowledges[index]
+                            .objectRelation
+                            .length + knowledges[index].docRelation.length
+                    }
+
+                    app.knowledges = knowledges
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+        },
+        methods: {
+            gradeChange :function(event){
+                this.produceActive=event.target.value
+                if(this.produceActive == 1) {
+                    location.href = "objectAppend1.html"
+                }else if(this.produceActive==2){
+                    location.href = "objectAppend1.html"
+                }else{
+                    location.href = "objectAppend2.html"
+                }
+
+
+            },
+            logout: function () {
+                $.removeCookie('user');
+                location.href = "login.html"
+            },
+            submitOb: function () {
+                if (!app.setRelation()) {
+                    app.newOb.objectRelation = []
+                    app.newOb.knowledgeRelation = []
+                    app.newOb.docRelation = []
+                    return
+                }
+                subOb = JSON.parse(JSON.stringify(app.newOb))
+                if (subOb.name == "") {
+                    swal("实体名不能为空")
+                    return
+                }
+
+                if (!app.isrepeat(subOb.property)) {
+                    swal("有重复属性")
+                    return
+                }
+
+
+                subOb.property = JSON.stringify(subOb.property)
+                subOb.knowledgeRelation = JSON.stringify(subOb.knowledgeRelation)
+                subOb.objectRelation = JSON.stringify(subOb.objectRelation)
+                subOb.docRelation = JSON.stringify(subOb.docRelation)
+                axios.post("/knowledgeGraph/ob/insert", subOb)
+                    .then(res => {
+                        console.log(res)
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    })
+                location.href = "objectAppend.html"
+            },
+            changePage: function (index) {
+                app.nowPage = index
+            },
+            deleteItem: function (item) {
+                item = JSON.parse(JSON.stringify(item))
+                item.property = JSON.stringify(item.property)
+                item.knowledgeRelation = JSON.stringify(item.knowledgeRelation)
+                item.objectRelation = JSON.stringify(item.objectRelation)
+                item.docRelation = JSON.stringify(item.docRelation)
+                swal("您确定删除本体" + item.name + "么")
+                axios.post("/knowledgeGraph/ob/delete", item)
+                    .then(res => {
+                        console.log(res)
+
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    })
+                location.href = "objectAppend.html"
+
+            },
+            addProperty: function () {
+                for (let index in app.newOb.property) {
+                    if (app.newOb.property[index].name == "" || app.newOb.property[index].value == "") {
+                        swal("还有未填完的属性")
+                        console.log(1)
+                        return
+                    }
+                }
+                app.newOb.property.push({
+                    name: "",
+                    value: ""
+                })
+            },
+            deleteProperty: function (index) {
+                app.newOb.property.splice(index, 1);
+            },
+            isrepeat: function (list) {
+                for (i in list) {
+                    for (j in list) {
+                        if (list[i].name == list[j].name && i != j) {
+                            return false
+                        }
+                    }
+                }
+                return true
+            },
+            addRelation: function () {
+                for (let index in app.newOb.relation) {
+                    if (app.newOb.relation[index].to == "" || app.newOb.relation[index].content == "" || app.newOb
+                        .relation[index].type == "") {
+                        swal("还有未填完的关系")
+                        console.log(1)
+                        return
+                    }
+                }
+                app.newOb.relation.push({
+                    to: "",
+                    content: "",
+                    type: ""
+                })
+            },
+            deleteRelation: function (index) {
+                app.newOb.relation.splice(index, 1);
+            },
+            setRelation: function () {
+                for (let index in app.newOb.relation) {
+
+                    let tmp = {
+                        to: app.newOb.relation[index].to,
+                        content: app.newOb.relation[index].content
+                    }
+                    if (app.newOb.relation[index].type == "1") {
+
+                        for (let i in app.newOb.objectRelation) {
+                            console.log(1)
+                            if (app.newOb.relation[index].to == app.newOb.objectRelation[i].to && app.newOb.relation[index]
+                                .to == app
+                                .newOb.objectRelation[i].to) {
+                                swal("有重复关系，请检查")
+                                return false
+                            }
+
+                        }
+                        if (!app.checkRelation("1", app.newOb.relation[index])) {
+                            swal("第" + (index + 1) + "条关系不成立")
+                            return false
+                        }
+                        app.newOb.objectRelation.push(tmp)
+                    } else if (app.newOb.relation[index].type == "2") {
+                        for (let i in app.newOb.knowledgeRelation) {
+
+                            if (app.newOb.relation[index].to == app.newOb.knowledgeRelation[i].to && app.newOb.relation[index]
+                                .to == app
+                                .newOb.knowledgeRelation[i].to) {
+                                swal("有重复关系，请检查")
+                                return false
+                            }
+
+                        }
+                        if (!app.checkRelation("1", app.newOb.relation[index])) {
+                            swal("第" + (index + 1) + "条关系不成立")
+                            return false
+                        }
+                        app.newOb.knowledgeRelation.push(tmp)
+                    } else if (app.newOb.relation[index].type == "3") {
+
+                        for (let i in app.newOb.docRelation) {
+                            if (app.newOb.relation[index].to == app.newOb.docRelation[i].to && app.newOb.relation[index].to ==
+                                app
+                                    .newOb.docRelation[i].to) {
+                                swal("有重复关系，请检查")
+                                return false
+                            }
+
+                        }
+                        if (!app.checkRelation("1", app.newOb.relation[index])) {
+                            swal("第" + (index + 1) + "条关系不成立")
+                            return false
+                        }
+                        app.newOb.docRelation.push(tmp)
+                    }
+                }
+                return true
+            },
+            checkRelation: function (type, item) {
+                console.log(1)
+                if (type == "1") {
+                    for (let index in app.obs) {
+                        if (parseInt(item.to) == app.obs[index].id) {
+
+                            return true
+                        }
+                    }
+                }
+                if (type == "2") {
+                    for (let index in app.knowledges) {
+                        if (parseInt(item.to) == app.knowledges[index].id) {
+                            return true
+                        }
+                    }
+                }
+                if (type == "3") {
+                    for (let index in app.docs) {
+                        if (parseInt(item.to) == app.docs[index].id) {
+                            return true
+                        }
+                    }
+                }
+
+                return false
+            }
+
+        }
+    })
+</script>
+</body>
+
+</html>
